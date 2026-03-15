@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: .
+    container_name: tnp-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/tnp_database
+      SPRING_DATASOURCE_USERNAME: praveen
+      SPRING_DATASOURCE_PASSWORD: praveen
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    external: true
